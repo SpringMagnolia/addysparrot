@@ -23,8 +23,8 @@
   --radius-menu: 16px;
   --shadow-hairline: inset 0 0 0 1px rgba(20, 20, 20, 0.12);
   --shadow-focus: 0 0 0 4px rgba(37, 99, 235, 0.18);
-  --shadow-card: 0 10px 30px rgba(20, 20, 20, 0.08), 0 1px 2px rgba(20, 20, 20, 0.05);
-  --shadow-card-hover: 0 14px 36px rgba(20, 20, 20, 0.11), 0 1px 2px rgba(20, 20, 20, 0.06);
+  --shadow-card: 0 4px 14px rgba(20, 20, 20, 0.06), 0 1px 2px rgba(20, 20, 20, 0.04);
+  --shadow-card-hover: 0 8px 22px rgba(20, 20, 20, 0.08), 0 1px 2px rgba(20, 20, 20, 0.05);
   --shadow-media: inset 0 0 0 1px rgba(255, 255, 255, 0.06), 0 12px 32px rgba(20, 20, 20, 0.12);
   --shadow-popover: 0 18px 44px rgba(20, 20, 20, 0.14), inset 0 0 0 1px rgba(20, 20, 20, 0.08);
   --duration-fast: 140ms;
@@ -709,7 +709,7 @@ h3 {
 
 .primary-button:hover:not(:disabled) {
   background: #2a2a2d;
-  box-shadow: 0 10px 22px rgba(17, 17, 17, 0.16);
+  box-shadow: 0 5px 12px rgba(17, 17, 17, 0.12);
   transform: translateY(-1px);
 }
 
@@ -954,6 +954,33 @@ h3 {
   text-align: center;
 }
 
+.cleanup-hint {
+  margin: 14px auto 0;
+  max-width: 560px;
+  text-align: center;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
+/* Empty video library: plain text + icon, no boxed background/border/shadow. */
+.empty-state {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+/* Favorite-cleanup hint shown on the right of the review entry header,
+   right-aligned to line up with the "复习入口" title row. */
+.review-heading .review-cleanup-hint {
+  align-self: center;
+  margin: 0;
+  text-align: right;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
 .status-panel.error {
   border-color: #f2b8b5;
   background: var(--color-danger-soft);
@@ -1176,7 +1203,7 @@ h3 {
   border-radius: 999px;
   background: rgba(17, 17, 17, 0.68);
   color: #fff;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
   pointer-events: auto;
   backdrop-filter: blur(10px);
 }
@@ -1961,8 +1988,22 @@ h3 {
 .sentence-action-left,
 .sentence-action-right {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
+}
+
+/* Each current-sentence action = round icon button with a small label below. */
+.sentence-action-item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.sentence-action-label {
+  font-size: 11px;
+  line-height: 1;
+  color: var(--color-muted);
+  white-space: nowrap;
 }
 
 .sentence-action-right {
@@ -4596,7 +4637,6 @@ h3 {
   font-weight: 560;
 }
 
-.empty-state,
 .status-panel {
   border: 0;
   background: var(--color-app);
@@ -4924,15 +4964,26 @@ h3 {
   min-height: 44px;
   padding: 0 16px;
   background: #fff;
-  box-shadow: var(--shadow-hairline), 0 6px 18px rgba(20, 20, 20, 0.06);
+  box-shadow: var(--shadow-hairline);
 }
 
 .heading-actions .nav-button:hover {
   background: var(--color-hover);
-  box-shadow: var(--shadow-hairline), 0 6px 18px rgba(20, 20, 20, 0.06);
+  box-shadow: var(--shadow-hairline);
 }
 
-.review-nav-entry svg {
+.heading-actions .review-nav-entry {
+  border-color: var(--color-ink);
+  background: var(--color-ink);
+  color: #fff;
+  box-shadow: var(--shadow-hairline);
+}
+.heading-actions .review-nav-entry:hover {
+  background: #2a2a2d;
+  color: #fff;
+  box-shadow: var(--shadow-hairline);
+}
+.heading-actions .review-nav-entry svg {
   fill: currentColor;
   stroke-width: 2.2;
 }

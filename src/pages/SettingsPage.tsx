@@ -115,7 +115,7 @@ export function SettingsPage() {
   const [diagnosticsLoading, setDiagnosticsLoading] = useState(false);
   const [diagnosticsError, setDiagnosticsError] = useState<string | null>(null);
   const [runtimeClearMessage, setRuntimeClearMessage] = useState<string | null>(null);
-  const showDebugPanel = import.meta.env.DEV || platformBridge.isDesktop();
+  const showDebugPanel = __DEBUG_FEATURES__;
 
   const refreshPairing = useCallback(async (options: { restart?: boolean } = {}) => {
     setLoadingPairing(true);
@@ -137,6 +137,7 @@ export function SettingsPage() {
   }, [t]);
 
   useEffect(() => {
+    if (!__DEBUG_FEATURES__) return;
     refreshPairing();
   }, [refreshPairing]);
 
@@ -170,6 +171,7 @@ export function SettingsPage() {
   }, []);
 
   useEffect(() => {
+    if (!__DEBUG_FEATURES__) return;
     refreshDiagnostics();
   }, [refreshDiagnostics]);
 
@@ -242,6 +244,7 @@ export function SettingsPage() {
         </div>
       </div>
 
+      {__DEBUG_FEATURES__ && (
       <section className="settings-panel">
         <div className="settings-section-heading">
           <h2>{t('settingsMobileTitle')}</h2>
@@ -285,6 +288,7 @@ export function SettingsPage() {
           </div>
         </div>
       </section>
+      )}
 
       <section className="settings-panel dictionary-settings-panel">
         <div className="settings-section-heading">

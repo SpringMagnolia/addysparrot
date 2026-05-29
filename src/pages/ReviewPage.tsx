@@ -65,6 +65,11 @@ export function ReviewPage() {
             <h1>{t('reviewEntry')}</h1>
           </div>
         </div>
+        <p className="review-cleanup-hint">
+          {t('favoriteCleanupHintL1')}
+          <br />
+          {t('favoriteCleanupHintL2')}
+        </p>
       </div>
 
       {overviewError && (

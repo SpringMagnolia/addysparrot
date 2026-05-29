@@ -1947,61 +1947,79 @@ export function DetailPage({ id }: { id: string }) {
               ) : (
                 <div className="sentence-action-row sentence-three-column-actions">
                   <div className="sentence-action-left">
-                    <button
-                      className="saved-icon-button"
-                      onClick={startCurrentSegmentEdit}
-                      title={t('editCaption')}
-                      aria-label={t('editCaption')}
-                    >
-                      <Edit3 size={17} />
-                    </button>
-                    <button
-                      className={editingSentenceNote ? 'saved-icon-button active' : 'saved-icon-button'}
-                      onClick={toggleCurrentSentenceNoteEdit}
-                      title={editingSentenceNote ? t('close') : hasSavedSentenceNote ? t('editNote') : t('addNote')}
-                      aria-label={editingSentenceNote ? t('close') : hasSavedSentenceNote ? t('editNote') : t('addNote')}
-                    >
-                      <MessageSquare size={17} />
-                    </button>
+                    <span className="sentence-action-item">
+                      <button
+                        className="saved-icon-button"
+                        onClick={startCurrentSegmentEdit}
+                        title={t('editCaption')}
+                        aria-label={t('editCaption')}
+                      >
+                        <Edit3 size={17} />
+                      </button>
+                      <span className="sentence-action-label">{t('actionEdit')}</span>
+                    </span>
+                    <span className="sentence-action-item">
+                      <button
+                        className={editingSentenceNote ? 'saved-icon-button active' : 'saved-icon-button'}
+                        onClick={toggleCurrentSentenceNoteEdit}
+                        title={editingSentenceNote ? t('close') : hasSavedSentenceNote ? t('editNote') : t('addNote')}
+                        aria-label={editingSentenceNote ? t('close') : hasSavedSentenceNote ? t('editNote') : t('addNote')}
+                      >
+                        <MessageSquare size={17} />
+                      </button>
+                      <span className="sentence-action-label">{t('actionNote')}</span>
+                    </span>
                   </div>
                   <div className="recording-actions" aria-label={t('currentSentenceRecording')}>
-                    <button
-                      className={isRecording ? 'saved-icon-button recording active' : 'saved-icon-button recording'}
-                      onClick={toggleRecording}
-                      title={isRecording ? t('stopRecording') : t('currentSentenceRecording')}
-                      aria-label={isRecording ? t('stopRecording') : t('currentSentenceRecording')}
-                    >
-                      {isRecording ? <Square size={16} /> : <Mic size={17} />}
-                    </button>
-                    <button
-                      className={isRecordingPlaying ? 'saved-icon-button active' : 'saved-icon-button'}
-                      onClick={toggleRecordingPlayback}
-                      title={recordingUrl ? (isRecordingPlaying ? t('pauseRecordingPlayback') : t('playRecording')) : t('noRecording')}
-                      aria-label={recordingUrl ? (isRecordingPlaying ? t('pauseRecordingPlayback') : t('playRecording')) : t('noRecording')}
-                      disabled={!recordingUrl || isRecording}
-                    >
-                      <Play size={17} />
-                    </button>
+                    <span className="sentence-action-item">
+                      <button
+                        className={isRecording ? 'saved-icon-button recording active' : 'saved-icon-button recording'}
+                        onClick={toggleRecording}
+                        title={isRecording ? t('stopRecording') : t('currentSentenceRecording')}
+                        aria-label={isRecording ? t('stopRecording') : t('currentSentenceRecording')}
+                      >
+                        {isRecording ? <Square size={16} /> : <Mic size={17} />}
+                      </button>
+                      <span className="sentence-action-label">{t('actionRecord')}</span>
+                    </span>
+                    <span className="sentence-action-item">
+                      <button
+                        className={isRecordingPlaying ? 'saved-icon-button active' : 'saved-icon-button'}
+                        onClick={toggleRecordingPlayback}
+                        title={recordingUrl ? (isRecordingPlaying ? t('pauseRecordingPlayback') : t('playRecording')) : t('noRecording')}
+                        aria-label={recordingUrl ? (isRecordingPlaying ? t('pauseRecordingPlayback') : t('playRecording')) : t('noRecording')}
+                        disabled={!recordingUrl || isRecording}
+                      >
+                        <Play size={17} />
+                      </button>
+                      <span className="sentence-action-label">{t('actionPlayRecording')}</span>
+                    </span>
                   </div>
                   <div className="sentence-action-right">
-                    <button
-                      className="saved-icon-button"
-                      onClick={splitCurrentSegmentIntoSegments}
-                      title={currentSegmentCanSplit ? t('splitByWordTiming') : t('splitNeedsTiming')}
-                      aria-label={currentSegmentCanSplit ? t('splitByWordTiming') : t('splitNeedsTiming')}
-                      disabled={!currentSegmentCanSplit}
-                    >
-                      <Scissors size={17} />
-                    </button>
-                    <button
-                      className={currentSentenceSaved ? 'saved-icon-button active' : 'saved-icon-button'}
-                      onClick={favoriteCurrentSentence}
-                      title={currentSentenceSaved ? t('saved') : t('favoriteSentence')}
-                      aria-label={currentSentenceSaved ? t('saved') : t('favoriteSentence')}
-                      disabled={savingFavorite}
-                    >
-                      {savingFavorite ? <Loader2 className="spin" size={17} /> : <BookmarkCheck size={17} />}
-                    </button>
+                    <span className="sentence-action-item">
+                      <button
+                        className="saved-icon-button"
+                        onClick={splitCurrentSegmentIntoSegments}
+                        title={currentSegmentCanSplit ? t('splitByWordTiming') : t('splitNeedsTiming')}
+                        aria-label={currentSegmentCanSplit ? t('splitByWordTiming') : t('splitNeedsTiming')}
+                        disabled={!currentSegmentCanSplit}
+                      >
+                        <Scissors size={17} />
+                      </button>
+                      <span className="sentence-action-label">{t('actionTrim')}</span>
+                    </span>
+                    <span className="sentence-action-item">
+                      <button
+                        className={currentSentenceSaved ? 'saved-icon-button active' : 'saved-icon-button'}
+                        onClick={favoriteCurrentSentence}
+                        title={currentSentenceSaved ? t('saved') : t('favoriteSentence')}
+                        aria-label={currentSentenceSaved ? t('saved') : t('favoriteSentence')}
+                        disabled={savingFavorite}
+                      >
+                        {savingFavorite ? <Loader2 className="spin" size={17} /> : <BookmarkCheck size={17} />}
+                      </button>
+                      <span className="sentence-action-label">{t('actionFavorite')}</span>
+                    </span>
                   </div>
                 </div>
               )}

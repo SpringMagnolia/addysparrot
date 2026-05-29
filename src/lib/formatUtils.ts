@@ -37,8 +37,8 @@ export function formatBackupResultMessage(kind: 'export' | 'import', result: Use
 
 export function formatClearDataResultMessage(kind: 'video' | 'learning', result: UserDataClearResult, t: Translator): string {
   return kind === 'video'
-    ? t('clearVideoDataDone', { count: result.totalCount })
-    : t('clearLearningDataDone', { count: result.totalCount });
+    ? t('clearVideoDataDone', { count: result.videoCount ?? 0 })
+    : t('clearLearningDataDone', { count: (result.favoriteWordCount ?? 0) + (result.favoriteSentenceCount ?? 0) });
 }
 
 export function formatVideoLibraryMeta(video: SavedVideo, t: Translator): string {

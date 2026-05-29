@@ -181,7 +181,7 @@ export function HomePage() {
             placeholder="https://www.youtube.com/watch?v=..."
           />
         </div>
-        <button className="primary-button" type="submit" disabled={addingVideo || importingVideo}>
+        <button className="secondary-button" type="submit" disabled={addingVideo || importingVideo}>
           {addingVideo ? <Loader2 className="spin" size={18} /> : <Plus size={18} />}
           {addingVideo ? t('addVideoLoading') : t('addVideo')}
         </button>
@@ -217,10 +217,15 @@ export function HomePage() {
         ))}
       </div>
 
+      {videos.length > 0 && (
+        <p className="cleanup-hint">{t('videoCleanupListHint')}</p>
+      )}
+
       {videos.length === 0 && (
         <div className="empty-state">
-          <Captions size={28} />
+          <Captions size={48} />
           <p>{t('emptyLibrary')}</p>
+          <p className="cleanup-hint">{t('videoCleanupEmptyHint')}</p>
         </div>
       )}
     </section>

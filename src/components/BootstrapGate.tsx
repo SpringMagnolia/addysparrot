@@ -216,7 +216,6 @@ export function BootstrapGate({ children }: BootstrapGateProps) {
         </div>
         <p className="bootstrap-copy">
           <span>{t('bootstrapCopy1')}</span>
-          <span>{t('bootstrapCopy2')}</span>
         </p>
 
         <div className="bootstrap-log" aria-label={t('bootstrapLogLabel')}>

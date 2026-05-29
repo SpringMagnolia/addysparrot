@@ -1,9 +1,8 @@
 /// <reference types="vite/client" />
 
-declare const __DEBUG_FEATURES__: boolean;
-declare const __BUILD_CHANNEL__: 'debug' | 'release';
-
 declare global {
+  const __DEBUG_FEATURES__: boolean;
+  const __BUILD_CHANNEL__: 'debug' | 'release';
   interface Window {
     YT?: {
       Player: new (
