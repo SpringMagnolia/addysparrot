@@ -1,0 +1,1 @@
+export const BOOTSTRAP_APP_DATA_TOKEN = '${APP_DATA}';
